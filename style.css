@@ -1,0 +1,102 @@
+.grid1{ grid-area: t;}
+.grid2{ grid-area: s;}
+.grid3{ grid-area: a;}
+.grid4{ grid-area: c;}
+.grid5{ grid-area: m;}
+
+
+.grid__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    grid-template-areas: 
+    't t t t t '
+    's s s s s '
+    'a a a a a '
+    'c c c c c '
+    'm m m m m '
+    ;    
+}
+
+
+.grid--item {
+    border: 10px solid;
+    border-image: linear-gradient(145deg, rgb(250, 246, 180), rgb(170, 214, 253))1;
+    min-height: auto;
+    padding: 30px;
+    margin: 10px;
+}
+
+
+.grid3, .grid4, .grid5 {
+    align-self: center;
+    justify-self: center;
+   
+}
+
+
+.grid3 , .grid4, .grid5  {
+    max-width: 80%;
+    position: relative;
+    top: 400px;
+}
+
+
+.grid__container div h5 {
+    max-width: fit-content;
+    position: relative;
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    border-bottom:rgb(136, 231, 136) double 1px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+
+.grid2 {
+    width: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.list-items {
+    display: inline;
+    font-size: 18px;
+    margin: 100px;
+    font-size: 30px;
+    background-color: green;
+    
+}
+
+.grid__container  img {
+    position: relative;
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    
+}  
+
+.enlarge--picture {
+    width: 40%; 
+}
+
+.green {
+    font-size: 20px;
+    background-color: honeydew;
+    
+}
+
+.test {
+    position: absolute;
+    border: green 1px solid;
+    width: 100px;
+    height: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+}
