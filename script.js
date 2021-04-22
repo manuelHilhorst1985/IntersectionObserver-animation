@@ -2,48 +2,88 @@
 
 const testObject1  = document.querySelector('.grid3');
 
+const gridImages  =  document.querySelectorAll('.grid__container img');
+
+
 const option1 = {
     root: null,                             //viewport
     treshhold: 0,                           //how much of the elemant is in the vieport
-    rootMargin: '-300px 0px -300px 0px'     //margin viewport
+    rootMargin: '-250px 0px 0px 0px'     //margin viewport
 };
 
 const observer1 = new IntersectionObserver(function(entries1, observer1) {
     entries1.forEach(entry1 => {
-        console.log(entry1)
-        entry1.target.classList.toggle('enlarge--picture')
-    })
-
+        if(entry1.isIntersecting) {
+            console.log(entry1);
+            entry1.target.classList.add('show--image');
+        } else entry1.target.classList.remove('show--image');
+        
+    });
 }, option1)
 
-observer1.observe(testObject1)                                        
+gridImages.forEach(images => {
+    observer1.observe(images)
+});
+                                  
 
 
 // --------------------->Horizontal scrolling<---------------------
 
 
-const alternativeRoot = document.querySelector('.grid2')
+const alternativeRoot = document.querySelector('.grid2');
 
-const listItems = document.querySelectorAll('.list-items')
+const listItems = document.querySelectorAll('.list-items');
 
 
 const option2 = {
     root: null, 
     treshhold: 0, 
-    rootMargin: '0px -700px 0px -700px'
+    
+    rootMargin: '0px -400px 0px -400px'
 }
 
 const observer2 = new IntersectionObserver(function(entries2, observer2) {
-    
     entries2.forEach(entry2 => {
-        console.log(entry2)
-        entry2.target.classList.toggle('green')
-        
+        // entry2.target.classList.toggle('change-color')
+        if(entry2.isIntersecting) {
+        entry2.target.classList.add('change-color');
+        } else entry2.target.classList.remove('change-color')
     });
     
 }, option2)
 
 listItems.forEach(list => {
     observer2.observe(list)
+})
+
+
+// --------------------->Scroll buttons<---------------------
+
+
+const scrollButtonLeft = document.querySelector('.button--scroll--left').addEventListener('click', ()=> {
+    
+    const containerGrid2 = document.querySelector('.grid2');
+    scrollAmount = 0;
+    const slideTimer = setInterval( () => {
+        containerGrid2.scrollLeft += 20;
+        scrollAmount += 5;
+        if(scrollAmount >= 100){
+            window.clearInterval(slideTimer)
+        }
+    }, 25);
+})
+
+
+const scrollButtonRight = document.querySelector('.button--scroll--right').addEventListener('click', () => {
+
+    const containerGrid2 = document.querySelector('.grid2');
+    scrollAmount = 0;
+    const slideTimer = setInterval( () => {
+        containerGrid2.scrollLeft -= 20;
+        scrollAmount += 5;
+        if(scrollAmount >= 100){
+            window.clearInterval(slideTimer)
+        }
+    }, 25);
 })
 
